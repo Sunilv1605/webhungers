@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="text-right">
+    <a href="/admin/products/add" class="btn btn-primary">Add New Product</a>
+  </div>
+  
+  <p><%= errorMsg; %></p>
+  
+  <table class="table table-bordered mt-3">
+    <thead>
+      <tr>
+        <th>S.No.</th>
+        <th>Image</th>
+        <th>Title</th>
+        <th>Price</th>
+        <th>Discounted Price</th>
+        <th>Inventory</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <% var i = 0; products.forEach(function(prod){ i++; %>
+      <tr>
+        <td><%= i %></td>
+        <td align="center"><img src="/product/images/<%=prod.image %>" height="100" width="100" /></td>
+        <td><%= prod.title %></td>
+        <td>Rs. <%= prod.price %> /-Only</td>
+        <td>Rs. <%= prod.discounted_price %> -/Only</td>
+        <td><%= prod.inventory %></td>
+        <td align="center">
+          <a href="/admin/product/edit/<%= prod.id %>" ><i class="fa fa-pencil"></i></a>
+          &nbsp;&nbsp;&nbsp;
+          <i class="fa fa-trash"></i>
+        </td>
+      </tr>
+    <% }); %>
+  </table>
+</div>
