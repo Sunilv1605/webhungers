@@ -1,0 +1,50 @@
+<style>
+  .prod-img-box{
+    background-size: contain;
+    background-position: bottom;
+    background-repeat: no-repeat;
+  }
+</style>
+<div class="container">
+  <div class="row">
+    <div class="col-12 text-center">
+      <h3 class="text-success"><%= successMsg; %></h3>
+    </div>
+    <% productsList.forEach(function(prod) {
+      var productImg = process.env.SERVER_URL+'product/images/'+prod.image;
+    %>
+    <div class="col-sm-4 form-group">
+      <div class="card">
+        <div class="card-body">
+          <div class="text-center prod-img-box" style="height: 200px;background-image: url('<%= productImg %>');">
+          </div>
+          <h5 class="card-title"><%= prod.title %></h5>
+          <p class="card-text">
+          <% if(prod.discounted_price && prod.discounted_price < prod.price) { %>
+              <span>Rs <%= prod.discounted_price %>/-</span>
+              <span style="text-decoration: line-through"> Rs <%= prod.price %>/- </span>
+          <% } else { %>
+            <span> Rs <%= prod.price %>/- </span>
+          <% } %>
+          </p>
+        </div>
+        <div class="card-footer">
+          <ul class="list-inline">
+            <li class="list-inline-item">
+              <a href="/add_to_cart/<%= prod.id %>" class="btn btn-primary">Add to Cart</a>
+            </li>
+            <li class="list-inline-item">
+              <a href="/product/<%= prod.id %>" class="btn btn-primary">View More</a>
+            </li>
+            <% if(prod.is_featured && prod.is_featured==1) { %>
+            <li class="list-inline-item pull-right">
+              <i class="fa fa-star text-warning" data-toggle="tooltip" data-placement="top" title="Featured Product"></i>
+            </li>
+            <% } %>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <% }); %>
+  </div>
+</div>

@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="col-sm-12 p-4">
+    <h3 class="text-success text-center"><%= successMsg %></h3>
+  </div>
+  <h3>Add to Cart Page</h3>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>S.No</th>
+        <th>Title</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% var i = 0; productList.forEach(function(prod){ i++; %>
+      <tr>
+        <td><%= i; %></td>
+        <td><%= prod.title; %></td>
+        <td><%= prod.price; %></td>
+        <td>1</td>
+        <td><a href="/remove_from_cart/<%= prod.id %>"><i class="fa fa-trash"></i></a></td>
+      </tr>
+      <% }); %>
+    </tbody>
+  </table>
+</div>

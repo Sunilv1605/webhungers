@@ -15,3 +15,9 @@ Front
 5. all the products added to the cart can be viewed in the cart and users can remove the product from the cart as well.
 
 No Checkout needed.
+
+Url: 
+fontend url: http://localhost:2500/
+Backend Url : http://localhost:2500/admin
+    Credentials: user: admin, pass: admin
+    

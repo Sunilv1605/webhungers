@@ -4,51 +4,58 @@
   </p>
   <div class="card">
     <div class="card-header">
-      <h5 class="card-title text-center">Add New Product</h5>
+      <h5 class="card-title text-center">Update Product</h5>
+      <h5 class="text-success text-center"><%= successMsg %></h5>
     </div>
     <div class="card-body">
       <form class="form" method="post" enctype="multipart/form-data">
         <div class="form-group">
           <label>Title</label>
-          <input type="text" name="title" id="producTitle" class="form-control" required="required" />
+          
+          <input type="text" name="title" id="producTitle" class="form-control" required="required" value="<%= productData.title %>" />
         </div>
         <div class="form-group">
           <label>Description</label>
-          <textarea name="description" id="producDescription" class="form-control" rows="5" required="required"></textarea>
+          <textarea name="description" id="producDescription" class="form-control" rows="5"
+          required="required"><%= productData.description %></textarea>
         </div>
         <div class="form-group">
           <label>Price</label>
-          <input type="number" name="price" id="producPrice" class="form-control" required="required" min="1" />
+          <input type="number" name="price" id="producPrice" class="form-control" required="required" value="<%= productData.price %>" min="1" />
         </div>
         <div class="form-group">
           <label>Discounted Price</label>
-          <input type="number" name="discountedPrice" id="producDiscountedPrice" class="form-control" />
+          <input type="number" name="discountedPrice" id="producDiscountedPrice" class="form-control" value="<%= productData.discounted_price %>" />
         </div>
         <div class="form-group">
           <label>Inventory</label>
-          <input type="number" name="inventory" id="producInventory" class="form-control" />
+          <input type="number" name="inventory" id="producInventory" class="form-control" value="<%= productData.inventory %>" />
+        </div>
+        <div class="form-group">
+          <label>Current Image</label>
+          <img src="/product/images/<%=productData.image %>" class="img-fluid" height="200" width="200" />
         </div>
         <div class="form-group">
           <label>Product Image</label>
           <div class="custom-file">
-            <input type="file" name="productImage" class="custom-file-input" id="customFile" required="required" />
+            <input type="file" name="productImage" class="custom-file-input" id="customFile" accept="image/*">
             <label class="custom-file-label" for="customFile">Upload Product Image</label>
           </div>
         </div>
-
+        
         <div class="form-group">
           <label>Is featured Product</label>
-          <br/>
+          <br />
           <label>
-            <input type="radio" name="is_featured" value="1" > Yes
+            <input type="radio" name="is_featured" value="1" checked="checked" > Yes
           </label>
           <label>
-            <input type="radio" name="is_featured" value="0" > No
+            <input type="radio" name="is_featured" value="0" <% if(productData.is_featured==0){ %> checked="checked" <% } %> /> No
           </label>
         </div>
         
         <div class="form-group text-center">
-          <button type="submit" class="btn btn-primary">Save Product</button>
+          <button type="submit" class="btn btn-primary">Update Product</button>
         </div>
       </form>
     </div>
